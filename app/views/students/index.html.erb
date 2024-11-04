@@ -1,0 +1,44 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Students</h1>
+
+
+<div class="text-bg-primary p-3">Provide summary for employers</div>
+
+<%= render 'search_form', search_params: @search_params %>
+<h3>Search Results:</h3>
+<% if @students.any? %>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Major</th>
+        <th>Graduation Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.first_name %></td>
+          <td><%= student.last_name %></td>
+          <td><%= student.major %></td>
+          <td><%= student.expected_graduation_date %></td>
+          <td>
+            <%= link_to "Show", student_path(student), class: "btn btn-info" %>
+            <%= link_to "Edit", edit_student_path(student), class: "btn btn-warning" %>
+            <%= link_to "Delete", student, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% elsif @search_params.present? %>
+  <p>No students found matching your search criteria.</p>
+<% else %>
+  <p>Please enter search criteria to find students.</p>
+<% end %>
+
+

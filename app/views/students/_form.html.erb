@@ -1,0 +1,74 @@
+<%= form_with(model: student) do |form| %>
+  <% if student.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :first_name, style: "display: block" %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_name, style: "display: block" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+
+  <div>
+    <%= form.label :major, style: "display: block" %>
+    <%= form.select :major, options_for_select(Student::VALID_MAJORS), { prompt: "Select a Major" }, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :expected_graduation_date, style: "display: block" %>
+    <%= form.date_field :expected_graduation_date %>
+  </div>
+
+  <div>
+    <%= form.label :profile_picture, style: "display: block" %>
+    <%= form.file_field :profile_picture %>
+  </div>
+
+<h2>Edit Portfolio Information</h2>
+
+  <%= form.fields_for :portfolio do |portfolio_form| %>
+    <div>
+      <%= portfolio_form.label :preferred_email %>
+      <%= portfolio_form.text_field :preferred_email %>
+    </div>
+
+    <div>
+      <%= portfolio_form.label :active %>
+      <%= portfolio_form.check_box :active %>
+    </div>
+
+    <div>
+      <%= portfolio_form.label :summary %>
+      <%= portfolio_form.text_area :summary %>
+    </div>
+
+    <div>
+      <%= portfolio_form.label :skills %>
+      <%= portfolio_form.text_area :skills %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit "Update Profile" %>
+  </div>
+  
+<% end %>
+

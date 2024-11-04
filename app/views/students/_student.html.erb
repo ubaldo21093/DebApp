@@ -1,0 +1,41 @@
+<div id="<%= dom_id student %>">
+  <p>
+    <strong>First name:</strong>
+    <%= student.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= student.last_name %>
+  </p>
+
+
+  <p>
+    <strong>Major:</strong>
+    <%= student.major %>
+  </p>
+
+  <p>
+    <strong>Expected graduation date:</strong>
+    <%= student.expected_graduation_date %>
+  </p>
+
+  <p>
+
+    <% if student.profile_picture.attached? %>
+      <%= image_tag student.profile_picture.variant(resize_to_limit: [150, nil])%>
+    <% else %>
+      <%= image_tag 'default-profile-picture.jpg', size: "150x150" %>
+    <% end %> 
+  </p>
+
+  <% if @student.portfolio %>
+  <p><strong>Preferred Email:</strong> <%= @student.portfolio.preferred_email %></p>
+  <p><strong>Active:</strong> <%= @student.portfolio.active ? 'Yes' : 'No' %></p>
+  <p><strong>Summary:</strong> <%= @student.portfolio.summary %></p>
+  <p><strong>Skills:</strong> <%= @student.portfolio.skills %></p>
+<% else %>
+  <p>No portfolio information available.</p>
+<% end %>
+
+</div>

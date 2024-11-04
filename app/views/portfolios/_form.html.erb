@@ -1,0 +1,37 @@
+<%= form.fields_for :portfolio do |portfolio_form| %>
+<% if @student.portfolio.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(@student.portfolio.errors.count, "error") %> prohibited this portfolio from being saved:</h2>
+
+    <ul>
+      <% @student.portfolio.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <div>
+    <%= portfolio_form.label :preferred_email, style: "display: block" %>
+    <%= portfolio_form.text_field :preferred_email %>
+  </div>
+
+  <div>
+    <%= portfolio_form.label :active, style: "display: block" %>
+    <%= portfolio_form.check_box :active %>
+  </div>
+
+  <div>
+    <%= portfolio_form.label :summary, style: "display: block" %>
+    <%= portfolio_form.text_area :summary %>
+  </div>
+
+  <div>
+    <%= portfolio_form.label :skills, style: "display: block" %>
+    <%= portfolio_form.text_area :skills %>
+  </div>
+
+  <div>
+    <%= portfolio_form.submit %>
+  </div>
+<% end %>

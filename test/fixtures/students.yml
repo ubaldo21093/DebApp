@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: Stack
+  last_name: Terror
+  school_email: sterror@msudenver.edu
+  major: CS BS
+  expected_graduation_date: 2025-05-25
+
+two:
+  first_name: Run
+  last_name: Time
+  school_email: rtime@msudenver.edu
+  major: CS BS
+  expected_graduation_date: 2024-12-15
